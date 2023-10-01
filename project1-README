@@ -1,0 +1,77 @@
+# Project1 - README
+## Project Environment
+- Operating System: xv6
+- Programming Language: C
+- Tools: QEMU or any xv6 compatible emulator
+
+`uniq.c:
+Command Line Argument Parsing:
+
+The program starts by parsing command-line arguments using a loop. It recognizes the -c, -i, and -d options and the input file.
+File Handling:
+
+It opens the specified input file for reading (open(input_file, 0)).
+If the file cannot be opened, it prints an error message and exits.
+Reading and Storing Lines:
+
+The program reads lines from the input file and stores them in memory.
+It handles memory allocation for lines dynamically, resizing the memory block as needed.
+Duplicate Line Removal:
+
+It checks for duplicate lines and keeps track of their counts.
+If the -i option is provided, it performs case-insensitive comparison.
+Output Generation:
+
+It generates output based on the specified options:
+If -c is provided, it prints the count of duplicate lines.
+If -d is provided, it only prints duplicate lines.
+If neither -c nor -d is provided, it prints unique lines.
+Memory Cleanup:
+
+It frees allocated memory before exiting the program.
+head.c:
+Command Line Argument Parsing:
+
+The program parses command-line arguments to determine the number of lines to display (-n option) and the input file.
+File Handling:
+
+It can read from either a specified input file or standard input (stdin).
+Line Display:
+
+It reads lines from the input source and prints them to the standard output.
+It counts lines and stops printing when the specified number of lines (or the default) is reached.
+
+`head.c`
+## Code Logic (head.c)
+The `head.c` program replicates the functionality of the `head` command. It reads and prints the first few lines of a file or input.
+
+- Command-line Arguments:
+  - `-n num`: Specifies the number of lines to display (optional).
+  - `file...`: The file(s) to read from (optional). If no files are provided, it reads from standard input.
+
+- Logic:
+  1. Parse command-line arguments to determine the number of lines to display and the file(s) to read from.
+  2. For each specified file or standard input:
+     - Open the file or use standard input if no file is specified.
+     - Read lines from the file or input.
+     - Print the lines until the specified line count is reached or the end of the file/input is reached.
+  3. Close the file if one was opened.
+
+## Steps to Run
+Follow these steps to compile and run the `head.c` program in the xv6 environment:
+
+1. Open the xv6 terminal.
+
+2. Navigate to the directory containing the `head.c` file.
+
+3. Compile the `head.c` program using the `make` command:
+   ```shell
+   make
+Usage of the Programs:
+To use uniq.c, you should compile it and run it with appropriate command-line options, such as -c, -i, and -d, along with the input file.
+To use head.c, you can compile it and run it with or without the -n option, followed by the input file. If no file is provided, it reads from stdin.
+
+Resources Used
+-https://github.com/avaiyang/xv6-head/blob/master/head.c
+-https://github.com/garagakteja/Custom-Unix-Commands/blob/master/uniq.c
+-https://www.geeksforgeeks.org/xv6-operating-system-adding-a-new-system-call/

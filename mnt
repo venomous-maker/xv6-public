@@ -1,0 +1,24 @@
+
+#include "types.h"
+#include "stat.h"
+#include "user.h"
+
+int main() {
+    struct pstat pinfo;
+
+    int pid = getpid(); // Get the PID of the current process
+
+    // Call the getpinfo system call to retrieve process information
+    if (getpinfo(pid, &pinfo) < 0) {
+        printf(2, "Error: getpinfo failed\n");
+        exit();
+    }
+
+    // Print the process information
+    printf(1, "Process ID: %d\n", pid);
+    printf(1, "Creation Time: %d\n", pinfo.creation_time);
+    printf(1, "End Time: %d\n", pinfo.end_time);
+    printf(1, "Total Time: %d\n", pinfo.total_time);
+
+    exit();
+}
